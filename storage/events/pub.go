@@ -33,7 +33,7 @@ func NewPublisher(redisAddr string) (*RedisPublisher, error) {
 		return nil, err
 	}
 
-	fmt.Println("Connected to Redis on ", redisAddr)
+	fmt.Println("Connected to Redis on", redisAddr)
 
 	return &RedisPublisher{
 		client: client,

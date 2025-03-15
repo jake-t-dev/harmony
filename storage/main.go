@@ -5,19 +5,32 @@ import (
 	"fmt"
 	"harmony-storage/events"
 	"harmony-storage/events/models"
+	"harmony-storage/pkg/db"
+	"log"
 
 	"github.com/google/uuid"
+	_ "github.com/lib/pq"
 )
 
 func main() {
 	ctx := context.Background()
-	publisher, err := events.NewPublisher("localhost:6379")
 
+	store, err := db.NewPostgresDB()
 	if err != nil {
-		fmt.Println(err)
-		return
+		log.Fatal(err)
 	}
 
+	defer store.Close()
+
+	if err := store.Init(); err != nil {
+		log.Fatal(err)
+	}
+
+	publisher, err := events.NewPublisher("localhost:6379")
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
 	defer publisher.Close()
 
 	newDirectMessage := models.DirectMessageEvent{
