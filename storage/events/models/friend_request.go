@@ -7,7 +7,7 @@ type FriendRequestEvent struct {
 	FriendRequest events.FriendRequest `json:"friend_request"`
 }
 
-func (e FriendRequestEvent) getEventType() string {
+func (e FriendRequestEvent) GetEventType() string {
 	return "friend_request"
 }
 
@@ -16,7 +16,7 @@ type FriendRequestAcceptEvent struct {
 	FriendRequest events.FriendRequest `json:"friend_request"`
 }
 
-func (e FriendRequestAcceptEvent) getEventType() string {
+func (e FriendRequestAcceptEvent) GetEventType() string {
 	return "friend_request_accept"
 }
 
@@ -25,6 +25,6 @@ type FriendRequestDeleteEvent struct {
 	FriendRequest events.FriendRequest `json:"friend_request"`
 }
 
-func (e FriendRequestDeleteEvent) getEventType() string {
+func (e FriendRequestDeleteEvent) GetEventType() string {
 	return "friend_request_delete"
 }

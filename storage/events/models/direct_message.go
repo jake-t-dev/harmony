@@ -8,7 +8,7 @@ type DirectMessageEvent struct {
 	Recipient events.User    `json:"recipient"`
 }
 
-func (e DirectMessageEvent) getEventType() string {
+func (e DirectMessageEvent) GetEventType() string {
 	return "direct_message"
 }
 
@@ -17,7 +17,7 @@ type DirectMessageUpdateEvent struct {
 	Message events.Message `json:"message"`
 }
 
-func (e DirectMessageUpdateEvent) getEventType() string {
+func (e DirectMessageUpdateEvent) GetEventType() string {
 	return "direct_message_update"
 }
 
@@ -26,6 +26,6 @@ type DirectMessageDeleteEvent struct {
 	Message events.Message `json:"message"`
 }
 
-func (e DirectMessageDeleteEvent) getEventType() string {
+func (e DirectMessageDeleteEvent) GetEventType() string {
 	return "direct_message_delete"
 }

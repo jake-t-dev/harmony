@@ -1,1 +1,25 @@
 package db
+
+import "database/sql"
+
+type PostgresDB struct {
+	db *sql.DB
+}
+
+func NewPostgresDB() (*PostgresDB, error) {
+	connStr := "user=postgres dbname=postgres sslmode=disable"
+	db, err := sql.Open("postgres", connStr)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := db.Ping(); err != nil {
+		return nil, err
+	}
+
+	return &PostgresDB{db: db}, nil
+}
+
+func (s *PostgresDB) Init() error {
+	return nil
+}

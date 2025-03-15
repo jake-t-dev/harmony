@@ -2,6 +2,8 @@ package events
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -19,24 +21,43 @@ type Payload struct {
 	Data      Event  `json:"data"`
 }
 
-func NewPublisher(redisAddr string) *RedisPublisher {
+func NewPublisher(redisAddr string) (*RedisPublisher, error) {
 	client := redis.NewClient(&redis.Options{
 		Addr:     redisAddr,
 		Password: "",
 		DB:       0,
 	})
 
+	_, err := client.Ping(context.Background()).Result()
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Println("Connected to Redis on ", redisAddr)
+
 	return &RedisPublisher{
 		client: client,
-	}
+	}, nil
+
+}
+
+func (p *RedisPublisher) Close() error {
+	return p.client.Close()
 }
 
 func (p *RedisPublisher) Publish(ctx context.Context, e Event) error {
 	payload := Payload{
-		EventType: e.getEventType(),
+		EventType: e.GetEventType(),
 		Data:      e,
 	}
-	err := p.client.Publish(ctx, "New Event: ", payload).Err()
+
+	payloadData, err := json.Marshal(payload)
+	if err != nil {
+		fmt.Println("Error serializing event:", err)
+		return err
+	}
+
+	err = p.client.Publish(ctx, "events", payloadData).Err()
 	if err != nil {
 		return err
 	}

@@ -8,7 +8,7 @@ type GroupMessageEvent struct {
 	Channel events.Channel `json:"channel"`
 }
 
-func (e GroupMessageEvent) getEventType() string {
+func (e GroupMessageEvent) GetEventType() string {
 	return "group_message"
 }
 
@@ -17,7 +17,7 @@ type GroupMessageUpdateEvent struct {
 	Message events.Message `json:"message"`
 }
 
-func (e GroupMessageUpdateEvent) getEventType() string {
+func (e GroupMessageUpdateEvent) GetEventType() string {
 	return "group_message_update"
 }
 
@@ -26,6 +26,6 @@ type GroupMessageDeleteEvent struct {
 	Message events.Message `json:"message"`
 }
 
-func (e GroupMessageDeleteEvent) getEventType() string {
+func (e GroupMessageDeleteEvent) GetEventType() string {
 	return "group_message_delete"
 }

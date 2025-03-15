@@ -4,7 +4,7 @@ import "github.com/google/uuid"
 
 // Event is an interface that all events must implement
 type Event interface {
-	getEventType() string
+	GetEventType() string
 }
 
 // Group is a struct that represents a group chat
