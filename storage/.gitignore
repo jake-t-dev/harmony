@@ -1,1 +1,6 @@
+bin/
+tmp/
 .env
+
+pre_cmd.txt
+post_cmd.txt
