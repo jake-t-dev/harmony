@@ -3,11 +3,21 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"harmony-storage/pkg/db/repo"
 	"log"
 )
 
 type PostgresDB struct {
 	db *sql.DB
+}
+type Storage interface {
+	Init() error
+	Close() error
+	CreateTable(q string) error
+
+	// repos
+	repo.MessageRepo
+	repo.UserRepo
 }
 
 func NewPostgresDB() (*PostgresDB, error) {
