@@ -3,7 +3,6 @@ package db
 import (
 	"database/sql"
 	"fmt"
-	"harmony-storage/pkg/db/repo"
 	"log"
 )
 
@@ -14,16 +13,6 @@ type Storage interface {
 	Init() error
 	Close() error
 	CreateTable(q string) error
-
-	// repos
-	repo.ChannelRepo
-	repo.DirectMessageRepo
-	repo.FriendRepo
-	repo.GroupInviteRepo
-	repo.GroupMemberRepo
-	repo.GroupMessageRepo
-	repo.GroupRepo
-	repo.UserRepo
 }
 
 func NewPostgresDB() (*PostgresDB, error) {
