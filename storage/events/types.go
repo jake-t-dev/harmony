@@ -35,3 +35,11 @@ type FriendRequest struct {
 	Sender    User
 	Receiver  User
 }
+
+// GroupInvite is a struct that represents a group invite containing an invite ID, sender, receiver, and group
+type GroupInvite struct {
+	InviteID uuid.UUID
+	Sender   User
+	Receiver User
+	Group    Group
+}

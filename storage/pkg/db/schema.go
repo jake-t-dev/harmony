@@ -27,6 +27,19 @@ const (
 		updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 	);`
 
+	CreateGroupInvitesTable = `
+	CREATE TABLE IF NOT EXISTS group_invites (
+		id UUID PRIMARY KEY,
+		group_id UUID NOT NULL,
+		sender_id UUID NOT NULL,
+		recipient_id UUID NOT NULL,
+		active BOOLEAN DEFAULT TRUE,
+		created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+		FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
+		FOREIGN KEY (recipient_id) REFERENCES users(id) ON DELETE CASCADE
+	);`
+
 	CreateGroupMembersTable = `
 	CREATE TABLE IF NOT EXISTS group_members (
 		group_id UUID NOT NULL,
