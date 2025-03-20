@@ -60,19 +60,6 @@ const (
 		FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE
 	);`
 
-	CreateMessagesTable = `
-    CREATE TABLE IF NOT EXISTS messages (
-        id UUID PRIMARY KEY,
-        type VARCHAR(100) NOT NULL,
-        sender_id UUID NOT NULL,
-        recipient_id UUID NOT NULL,
-        content TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (recipient_id) REFERENCES users(id) ON DELETE CASCADE
-    );`
-
 	CreateDirectMessagesTable = `
     CREATE TABLE IF NOT EXISTS direct_messages (
         id UUID PRIMARY KEY,
@@ -89,11 +76,13 @@ const (
 	CREATE TABLE IF NOT EXISTS group_messages (
 		id UUID PRIMARY KEY,
 		group_id UUID NOT NULL,
+		channel_id UUID NOT NULL,
 		sender_id UUID NOT NULL,
 		content TEXT NOT NULL,
 		created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+		FOREIGN KEY (channel_id) REFERENCES channels(id) ON DELETE CASCADE,
 		FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE
 	);`
 
@@ -117,7 +106,6 @@ func GetCreateDatabase() CreateDB {
 			{Query: CreateGroupsTable},
 			{Query: CreateGroupMembersTable},
 			{Query: CreateChannelsTable},
-			{Query: CreateMessagesTable},
 			{Query: CreateDirectMessagesTable},
 			{Query: CreateGroupMessagesTable},
 			{Query: CreateFriendsTable},

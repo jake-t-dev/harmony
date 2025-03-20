@@ -16,7 +16,13 @@ type Storage interface {
 	CreateTable(q string) error
 
 	// repos
-	repo.MessageRepo
+	repo.ChannelRepo
+	repo.DirectMessageRepo
+	repo.FriendRepo
+	repo.GroupInviteRepo
+	repo.GroupMemberRepo
+	repo.GroupMessageRepo
+	repo.GroupRepo
 	repo.UserRepo
 }
 
