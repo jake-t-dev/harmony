@@ -21,10 +21,8 @@ export default DefaultLayout
 
 const Container = styled("div")({
     width: "100%",
-    height: "100%",
+    height: "100vh",
     overflow: "auto",
-    background:
-    'linear-gradient(180deg, #FFFFFF 0%, #F3F4F6 100%)',
     display: "flex",
 })
 
@@ -32,9 +30,13 @@ const Page = styled("div")({
     flex: "auto",
     display: "flex",
     flexDirection: "column",
+    height: "100%",
+    overflow: "auto",
 })
 
 const Content = styled("div")({
     flex: "auto",
     padding: "20px",
+    height: "100%",
+    overflow: "auto",
 })
