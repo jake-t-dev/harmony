@@ -3,7 +3,9 @@ import GroupIconBox from "../group-icon/group-icon-box";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 
-const GroupList = () => {
+type GroupListProps = { handleMenuClick?: () => void };
+
+const GroupList = ({ handleMenuClick }: GroupListProps) => {
   return (
     <Box
       width={"80px"}
@@ -14,10 +16,7 @@ const GroupList = () => {
         borderRadius: 2,
       }}
     >
-      <GroupIconBox
-        overridingStyles={{
-          backgroundColor: "secondary.main",
-        }}>
+      <GroupIconBox onClick={handleMenuClick}>
         <MenuRoundedIcon />
       </GroupIconBox>
 
@@ -33,9 +32,12 @@ const GroupList = () => {
 
       <GroupIconBox
         overridingStyles={{
+          bgcolor: "primary.main",
+          transition: "border-radius 0.3s ease",
           borderRadius: "16px",
           "&:hover": {
             borderRadius: "60px",
+            cursor: "pointer",
           },
         }}
       >

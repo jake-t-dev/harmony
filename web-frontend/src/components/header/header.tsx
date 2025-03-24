@@ -1,14 +1,20 @@
-import {Grid2} from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
 const Header = () => {
-    return (
-        <Grid2 container
-            direction="row"
-            justifyContent="flex-end"
-            alignItems="center"
-            padding={2}>
-        </Grid2>
-    );
-}
+  return (
+    <>
+      <Box height={"100px"}>
+        <Typography variant="h5">Header</Typography>
+      </Box>
+      <Divider
+        orientation="horizontal"
+        sx={{
+          width: "100%",
+          backgroundColor: "text.secondary",
+        }}
+      />
+    </>
+  );
+};
 
 export default Header;

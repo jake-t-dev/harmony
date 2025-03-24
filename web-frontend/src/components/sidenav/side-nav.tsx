@@ -1,10 +1,9 @@
-import { Divider, Drawer, Grid2 } from "@mui/material";
+import { Divider, Grid2 } from "@mui/material";
 import { useState } from "react";
 import GroupList from "./group-list/group-list";
 
 const SideNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -14,12 +13,13 @@ const SideNav = () => {
       <Grid2
         container
         direction="row"
-        sx={{ width: "300px", backgroundColor: "secondary.main" }}
+        sx={{
+          transition: "width 0.3s ease",
+          width: isOpen ? "300px" : "120px",
+          backgroundColor: "secondary.main",
+        }}
       >
-        <GroupList />
-        <Drawer anchor="left" open={isOpen} onClose={handleToggle}>
-          <p>SideNav</p>
-        </Drawer>
+        <GroupList handleMenuClick={handleToggle} />
       </Grid2>
       <Divider
         orientation="vertical"
