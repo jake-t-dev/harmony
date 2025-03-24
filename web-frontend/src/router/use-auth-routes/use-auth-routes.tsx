@@ -15,6 +15,7 @@ export const useAuthRoutes = () => {
             element: <GroupChat />,
           },
         ],
+        
       },
     ];
   }, []);

@@ -1,5 +1,4 @@
 import {Grid2} from "@mui/material";
-import ProfileIcon from "../profile-icon/profile-icon";
 
 const Header = () => {
     return (
@@ -8,7 +7,6 @@ const Header = () => {
             justifyContent="flex-end"
             alignItems="center"
             padding={2}>
-            <ProfileIcon />
         </Grid2>
     );
 }

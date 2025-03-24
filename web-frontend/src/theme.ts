@@ -6,19 +6,21 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#7e22ce",
-      light: "#d8b4fe",
+      main: "#7E22CE",
+      light: "#E9D5FF",
     },
     secondary: {
-      main: "#3f3f46",
+      main: "#18181B",
+      light: "#D4D4D8",
+      dark: "#09090B",
     },
     background: {
-      default: "#27272a",
-      paper: "#27272a",
+      default: "#262626",
+      paper: "#262626",
     },
     text: {
       primary: "#fff",
-      secondary: "#a0a0a0",
+      secondary: "#52525B",
     },
   },
   typography: {

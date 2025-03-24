@@ -1,6 +1,6 @@
 import { styled } from "@mui/material"
 import { Outlet } from "react-router-dom"
-import SideNav from "../sidenav/sidenav"
+import SideNav from "../sidenav/side-nav"
 import Header from "../header/header"
 
 const DefaultLayout = () => {
