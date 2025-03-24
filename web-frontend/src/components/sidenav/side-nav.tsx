@@ -1,4 +1,4 @@
-import { Divider, Grid2 } from "@mui/material";
+import { Box, Divider, Grid2 } from "@mui/material";
 import { useState } from "react";
 import GroupList from "./group-list/group-list";
 
@@ -20,7 +20,21 @@ const SideNav = () => {
         }}
       >
         <GroupList handleMenuClick={handleToggle} />
+        <Box>
+          <Box
+            width={isOpen ? "160px" : "0px"}
+            height={"60px"}
+            borderRadius={"16px"}
+            sx={{
+              position: "absolute",
+              bottom: 25,
+              bgcolor: "secondary.dark",
+              transition: "width 0.3s ease",
+            }}
+          ></Box>
+        </Box>
       </Grid2>
+
       <Divider
         orientation="vertical"
         sx={{

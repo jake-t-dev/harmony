@@ -13,7 +13,7 @@ const GroupList = ({ handleMenuClick }: GroupListProps) => {
       height={"calc(100vh - margin)"}
       margin={"20px"}
       sx={{
-        borderRadius: 2,
+        borderRadius: "16px",
       }}
     >
       <GroupIconBox onClick={handleMenuClick}>
